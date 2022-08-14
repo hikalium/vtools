@@ -1,0 +1,33 @@
+{
+  "name": "todolium",
+  "version": "1.0.0",
+  "description": "Todo manager for hikalium",
+  "scripts": {
+    "test": "echo \"Error: no test specified\"",
+    "start": "node --enable-source-maps generated/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hikalium/todolium.git"
+  },
+  "keywords": [
+    "todo",
+    "nodejs",
+    "hikalium"
+  ],
+  "author": "hikalium",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hikalium/todolium/issues"
+  },
+  "homepage": "https://github.com/hikalium/todolium#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "humanize-duration": "^3.27.2",
+    "socket.io": "^4.5.1"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/express": "^4.17.13"
+  }
+}
