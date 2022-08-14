@@ -1,3 +1,5 @@
+const socket = io();
+
 var midi = null;
 var sliderElements = [];
 var knobElements = [];
@@ -16,6 +18,7 @@ function onMIDIMessage(event) {
       const idx = data[1];
       const value = data[2];
       sliderElements[idx].value = value;
+      socket.emit('change_hikalium_opacity', value);
       midiOutput.send([0x90, 0x5b, value > 0x10 ? 0x7f : 0x00]);
     }
     if (0x10 <= data[1] && data[1] < 0x18) {
@@ -42,6 +45,7 @@ function onMIDIMessage(event) {
     // Pitch Bend
     const idx = data[0] - 0xe0;
     const value = data[2];
+    socket.emit('change_hikalium_opacity', value / 127);
     sliderElements[idx].value = value;
     midiOutput.send([0x90, 0x5b, value > 0x10 ? 0x7f : 0x00]);
     midiOutput.send([0x90, 0x5c, value > 0x20 ? 0x7f : 0x00]);
@@ -118,3 +122,6 @@ function onMIDIFailure(msg) {
   }
 })();
 
+socket.on('list_done', () => {
+  console.log("list_done");
+});

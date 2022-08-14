@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "es2022",
+    "target": "es2022",
     "preserveConstEnums": true,
     "outDir": "./generated/",
     "sourceMap": true,
